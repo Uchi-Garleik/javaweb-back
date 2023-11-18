@@ -1,5 +1,9 @@
 
 
+import action.ActionProduct;
+import action.ActionUser;
+import com.google.gson.Gson;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,17 +16,43 @@ import java.util.List;
 
 @WebServlet("/MyServlet")
 public class MyServlet  extends HttpServlet {
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                throws IOException, ServletException {
-            // Procesa alguna lógica aquí
-            String message = "{message: 'Hola desde el Servlet'}";
-            response.setContentType("application/json");
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        // Procesa alguna lógica aquí
+        String message = "{message: 'Hola desde el Servlet'}";
+        response.setContentType("application/json");
 
-            String action = request.getParameter("ACTION");
+        String action = request.getParameter("ACTION");
+        PrintWriter out = response.getWriter();
+        System.out.println("hola que tal");
+        String answer = "";
+        switch(action){
+            case "PRODUCT.ADD":
+                System.out.println(request.getParameter("ACTION"));
+                System.out.println(request.getParameter("nombre"));
+                ActionProduct actionProduct = new ActionProduct();
+                answer = actionProduct.execute(request, response);
+                break;
+
+            case "USER.LOGIN":
+                answer = new ActionUser().execute(request, response);
+                break;
+
+            default:
+                System.out.print("tonto");
+                answer = "tonto";
+                break;
+        }
+
+
+        out.print(answer);
+    }
+}
+
+
             //String id= request.getParameter("id");
-            PrintWriter out = response.getWriter();
+
             //out.print(message);a
-            String jsonResponse = "{\"message\": \"¡Hola desde el Servlet!_"+ action + "\"}";
+            /*String jsonResponse = "{\"message\": \"¡Hola desde el Servlet!_"+ action + "\"}";
 
             String jsonResponseObject= "{\n" +
                     "    \"message\": \"Este es un mensaje de ejemplo\",\n" +
@@ -79,14 +109,14 @@ public class MyServlet  extends HttpServlet {
 
             // Escribir el JSON en el PrintWriter
             //out.print(jsonResponse);
-            /*request.setAttribute("message", message);
+            *//*request.setAttribute("message", message);
             request.getRequestDispatcher("/index.jsp").forward(request, response);
-             */
+             *//*
             out.print(peliculas);
             out.close();
         }
-
-    public static String convertUsersToJSONString(List<User> users) {
+*/
+  /*  public static String convertUsersToJSONString(List<User> users) {
         StringBuilder jsonBuilder = new StringBuilder();
         jsonBuilder.append("[");
 
@@ -105,6 +135,6 @@ public class MyServlet  extends HttpServlet {
 
         jsonBuilder.append("]");
         return jsonBuilder.toString();
-    }
-    }
+    }*/
+
 
