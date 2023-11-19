@@ -47,6 +47,11 @@ public class DAOProduct {
         if (producto.getNombre() != null && !producto.getNombre().equals("")){
             sql += " AND nombre = '" + producto.getNombre() + '\'';
         }
+
+        if (producto.getIdUser() != 0){
+            sql += " AND idUser = " + producto.getIdUser();
+        }
+
         System.out.println(sql);
 
         motorSQL.connect();

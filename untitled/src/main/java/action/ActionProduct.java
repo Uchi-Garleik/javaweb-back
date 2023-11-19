@@ -93,6 +93,7 @@ public class ActionProduct {
 
 // Check and set "idUser" parameter
         if (request.getParameter("idUser") != null) {
+            System.out.println("huh");
             producto.setIdUser(Integer.parseInt(request.getParameter("idUser")));
         }
         productsList = new DAOProduct().findAll(producto);
