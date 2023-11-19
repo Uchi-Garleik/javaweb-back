@@ -22,6 +22,7 @@ public class DAOUser {
     public ArrayList<Usuario> findAll(Usuario usuario){
         String sql = "";
         sql = sqlFindAll;
+
         sql += " AND username = '" + usuario.getUsername() + "' AND password = '" + usuario.getPassword()+'\'';
         System.out.println(sql);
         ArrayList<Usuario> listUsuario = new ArrayList<>();
@@ -55,4 +56,7 @@ public class DAOUser {
         return listUsuario;
     }
 
+    public ArrayList<Usuario> highestSells(Usuario usuario) {
+        return new ArrayList<Usuario>();
+    }
 }

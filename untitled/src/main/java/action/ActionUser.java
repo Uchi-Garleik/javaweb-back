@@ -20,6 +20,8 @@ public class ActionUser {
             case "LOGIN":
                 answer = login(request, response);
                 break;
+            case "FILTER":
+                answer = filter(request, response);
             default:
                 System.out.println("wtf why am i here");
                 break;
@@ -28,6 +30,43 @@ public class ActionUser {
 
 
         return answer;
+    }
+
+    private String filter(HttpServletRequest request, HttpServletResponse response) {
+        String jsonUsuarios = "";
+        Usuario usuario = new Usuario();
+
+        /*
+        *   TODO: Could maybe stablish these default values on the constructor.
+        *       Not doing this yet in case it breaks it.
+        *       Reminder to do this too for the products
+        * */
+
+        usuario.setId(-1);
+        usuario.setUsername("");
+        usuario.setPassword("");
+
+
+        if (!(request.getParameter("id").equals(""))){
+            usuario.setId(Integer.parseInt(request.getParameter("id")));
+        }
+
+        if (!(request.getParameter("username").equals(""))){
+            usuario.setUsername(request.getParameter("username"));
+        }
+
+        if (!(request.getParameter("password").equals(""))){
+            usuario.setPassword(request.getParameter("password"));
+        }
+
+        ArrayList<Usuario> usuarios = new DAOUser().findAll(usuario);
+
+        String method = request.getParameter("ACTION").split("\\.")[1];
+        if (method.equals("HighestSells")){
+            ArrayList<Usuario> usuariosA = new DAOUser().highestSells(usuario);
+        }
+
+        return jsonUsuarios;
     }
 
     private String login(HttpServletRequest request, HttpServletResponse response) {

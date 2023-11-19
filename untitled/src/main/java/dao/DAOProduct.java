@@ -48,7 +48,7 @@ public class DAOProduct {
             sql += " AND nombre = '" + producto.getNombre() + '\'';
         }
 
-        if (producto.getIdUser() != 0){
+        if (producto.getIdUser() > 0){
             sql += " AND idUser = " + producto.getIdUser();
         }
 

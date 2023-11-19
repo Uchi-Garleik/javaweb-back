@@ -38,7 +38,9 @@ public class MyServlet  extends HttpServlet {
             case "USER.LOGIN":
                 answer = new ActionUser().execute(request, response);
                 break;
-
+            case "USER.FILTER":
+                answer = new ActionUser().execute(request, response);
+                break;
             default:
                 System.out.print("tonto");
                 answer = "tonto";
