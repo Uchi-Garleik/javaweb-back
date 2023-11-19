@@ -1,10 +1,13 @@
 package action;
 
+import com.google.gson.Gson;
 import dao.DAOProduct;
 import model.Producto;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 
 public class ActionProduct {
     DAOProduct daoProduct;
@@ -21,14 +24,89 @@ public class ActionProduct {
 
         switch(method[1]){
             case "ADD":
-                System.out.println("we adding");
+                System.out.println("{adding articles...}");
                 answer = addProduct(request, response);
                 break;
+            case "FILTER":
+                System.out.println("{filtering articles...}");
+                answer = listProducts(request, response);
+                break;
             default:
-                System.out.println("lol noob");
+                System.out.println("no method found");
                 break;
         }
         return answer;
+    }
+
+    private String listProducts(HttpServletRequest request, HttpServletResponse response){
+        ArrayList<Producto> productsList = new ArrayList<>();
+        Producto producto = new Producto();
+        producto.setNombre("");
+        producto.setDescripcion("");
+        producto.setCategoria("");
+        producto.setMarca("");
+        producto.setTalla("");
+        producto.setEstado("");
+        producto.setPrecio(-1);
+        producto.setMoneda("");
+        producto.setIdUser(-1);
+
+        if (request.getParameter("nombre") != null){
+            producto.setNombre(request.getParameter("nombre"));
+        }
+
+// Check and set "descripcion" parameter
+        if (request.getParameter("descripcion") != null) {
+            System.out.println("LINEA 60");
+            producto.setDescripcion(request.getParameter("descripcion"));
+        }
+
+// Check and set "categoria" parameter
+        if (request.getParameter("categoria") != null) {
+            producto.setCategoria(request.getParameter("categoria"));
+        }
+
+// Check and set "marca" parameter
+        if (request.getParameter("marca") != null) {
+            producto.setMarca(request.getParameter("marca"));
+        }
+
+// Check and set "talla" parameter
+        if (request.getParameter("talla") != null) {
+            producto.setTalla(request.getParameter("talla"));
+        }
+
+// Check and set "estado" parameter
+        if (request.getParameter("estado") != null) {
+            producto.setEstado(request.getParameter("estado"));
+        }
+
+// Check and set "precio" parameter
+        if (request.getParameter("precio") != null) {
+            producto.setPrecio(Double.parseDouble(request.getParameter("precio")));
+        }
+
+// Check and set "moneda" parameter
+        if (request.getParameter("moneda") != null) {
+            producto.setMoneda(request.getParameter("moneda"));
+        }
+
+// Check and set "idUser" parameter
+        if (request.getParameter("idUser") != null) {
+            producto.setIdUser(Integer.parseInt(request.getParameter("idUser")));
+        }
+        productsList = new DAOProduct().findAll(producto);
+
+        Gson gson = new Gson();
+        String json = "";
+        json += "{\"message\": \"Esto es un mensaje de prueba\",\"productsList\": [";
+
+        for (Producto productoAux:productsList) {
+            json += gson.toJson(productoAux) + ", ";
+        }
+        json = json.substring(0, json.length()-2);
+        json += "]}";
+        return json;
     }
 
     private String addProduct(HttpServletRequest request, HttpServletResponse response) {

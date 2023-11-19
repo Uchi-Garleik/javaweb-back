@@ -32,7 +32,9 @@ public class MyServlet  extends HttpServlet {
                 ActionProduct actionProduct = new ActionProduct();
                 answer = actionProduct.execute(request, response);
                 break;
-
+            case "PRODUCT.FILTER":
+                answer = new ActionProduct().execute(request, response);
+                break;
             case "USER.LOGIN":
                 answer = new ActionUser().execute(request, response);
                 break;
@@ -42,7 +44,8 @@ public class MyServlet  extends HttpServlet {
                 answer = "tonto";
                 break;
         }
-
+        System.out.println("ANSWER IS:");
+        System.out.println(answer);
 
         out.print(answer);
     }

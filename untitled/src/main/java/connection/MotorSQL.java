@@ -56,8 +56,6 @@ public class MotorSQL {
 
     public ResultSet executeQuery(String sql){
         try {
-            System.out.println(sql);
-            System.out.println("hey");
             return statement.executeQuery(sql);
         } catch (SQLException e) {
             throw new RuntimeException(e);
