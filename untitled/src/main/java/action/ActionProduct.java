@@ -41,8 +41,9 @@ public class ActionProduct {
         System.out.println(request.getParameter("estado"));
         double precio = Double.parseDouble(request.getParameter("precio"));
         String moneda = request.getParameter("moneda");
+        int idUser = Integer.parseInt(request.getParameter("idUser"));
 
-        Producto producto = new Producto(nombre, descripcion, categoria, marca, talla, estado, precio, moneda);
+        Producto producto = new Producto(nombre, descripcion, categoria, marca, talla, estado, precio, moneda, idUser);
         daoProduct.add(producto);
 
         /*String jsonResponseObject= "{\n" +

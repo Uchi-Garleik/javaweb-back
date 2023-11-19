@@ -10,12 +10,13 @@ public class Producto {
     private String estado;
     private double precio;
     private String moneda;
+    private int idUser;
 
     public Producto() {
 
     }
 
-    public Producto(String nombre, String descripcion, String categoria, String marca, String talla, String estado, double precio, String moneda) {
+    public Producto(String nombre, String descripcion, String categoria, String marca, String talla, String estado, double precio, String moneda, int idUser) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -24,6 +25,7 @@ public class Producto {
         this.estado = estado;
         this.precio = precio;
         this.moneda = moneda;
+        this.idUser = idUser;
     }
 
     @Override
@@ -37,7 +39,16 @@ public class Producto {
                 ", estado='" + estado + '\'' +
                 ", precio=" + precio +
                 ", moneda='" + moneda + '\'' +
+                ", idUser=" + idUser +
                 '}';
+    }
+
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(int idUser) {
+        this.idUser = idUser;
     }
 
     public String getNombre() {

@@ -8,7 +8,7 @@ public class DAOProduct {
     private MotorSQL motorSQL;
 
     private String tableName = "productos";
-    private String sqlInsert = "INSERT INTO " + tableName + " (nombre, descripcion, categoria, marca, talla, estado, precio, moneda) VALUES";
+    private String sqlInsert = "INSERT INTO " + tableName + " (nombre, descripcion, categoria, marca, talla, estado, precio, moneda, idUser) VALUES";
 
     public DAOProduct(){
         motorSQL = MotorSQL.getMotorSQL();
@@ -24,7 +24,8 @@ public class DAOProduct {
                 "'" + producto.getTalla() + "'," +
                 "'" + producto.getEstado() + "'," +
                 "" + producto.getPrecio() + "," +
-                "'" + producto.getMoneda() + "'" +
+                "'" + producto.getMoneda() + "'," +
+                "" + producto.getIdUser() +
                 ")";
         System.out.println(sql);
         motorSQL.connect();
