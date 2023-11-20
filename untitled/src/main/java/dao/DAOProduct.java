@@ -11,7 +11,7 @@ public class DAOProduct {
 
     private MotorSQL motorSQL;
 
-    private String tableName = "productos";
+    private String tableName = "products";
     private String sqlInsert = "INSERT INTO " + tableName + " (nombre, descripcion, categoria, marca, talla, estado, precio, moneda, idUser) VALUES";
     private String sqlFindAll = "SELECT * FROM " + tableName + " WHERE 1=1";
 

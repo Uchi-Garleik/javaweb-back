@@ -47,15 +47,19 @@ public class ActionUser {
         usuario.setPassword("");
 
 
-        if (!(request.getParameter("id").equals(""))){
+//        if (!(request.getParameter("id").equals(""))){
+//            usuario.setId(Integer.parseInt(request.getParameter("id")));
+//        }
+
+        if (!(request.getParameter("id") == null)){
             usuario.setId(Integer.parseInt(request.getParameter("id")));
         }
 
-        if (!(request.getParameter("username").equals(""))){
+        if (!(request.getParameter("username") == null )){
             usuario.setUsername(request.getParameter("username"));
         }
 
-        if (!(request.getParameter("password").equals(""))){
+        if (!(request.getParameter("password") == null)){
             usuario.setPassword(request.getParameter("password"));
         }
 
