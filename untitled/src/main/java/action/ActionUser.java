@@ -35,6 +35,10 @@ public class ActionUser {
     private String filter(HttpServletRequest request, HttpServletResponse response) {
         String jsonUsuarios = "";
         Usuario usuario = new Usuario();
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        if (request.getParameter("FILTER") != null){
+            System.out.println("hay filtros");
+        }
 
         /*
         *   TODO: Could maybe stablish these default values on the constructor.
@@ -63,13 +67,24 @@ public class ActionUser {
             usuario.setPassword(request.getParameter("password"));
         }
 
-        ArrayList<Usuario> usuarios = new DAOUser().findAll(usuario);
+        //usuarios = new DAOUser().findAll(usuario);
 
-        String method = request.getParameter("ACTION").split("\\.")[1];
+        String method = request.getParameter("FILTER");
+        System.out.println(method);
         if (method.equals("HighestSells")){
-            ArrayList<Usuario> usuariosA = new DAOUser().highestSells(usuario);
+            usuarios = new DAOUser().highestSells(usuario);
         }
 
+        jsonUsuarios += "{ \"message\": \"Esto es un mensaje de prueba\", " +
+                "\"usersList\": [";
+
+        Gson gson = new Gson();
+
+        for (Usuario usuarioAux : usuarios) {
+            jsonUsuarios += gson.toJson(usuarioAux)+", ";
+        }
+        jsonUsuarios = jsonUsuarios.substring(0, jsonUsuarios.length()-2);
+        jsonUsuarios += "]}";
         return jsonUsuarios;
     }
 

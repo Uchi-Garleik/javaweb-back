@@ -4,8 +4,10 @@ public class Usuario {
     private int id;
     private String username;
     private String password;
+    private int sells;
 
     public Usuario() {
+        this.setSells(0);
     }
 
     @Override
@@ -15,6 +17,14 @@ public class Usuario {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    public int getSells() {
+        return sells;
+    }
+
+    public void setSells(int sells) {
+        this.sells = sells;
     }
 
     public Usuario(String username, String password) {

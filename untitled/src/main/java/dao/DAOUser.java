@@ -14,6 +14,7 @@ public class DAOUser {
 
     private String tableName = "users";
     private String sqlFindAll = "SELECT * FROM " + tableName + " WHERE 1=1";
+    private String sqlHighestSell = "SELECT users.id, users.username, COUNT(*) as TotalVentas FROM users INNER JOIN products ON products.idUser = users.id GROUP BY users.id ORDER BY TotalVentas DESC LIMIT 4";
 
     public DAOUser(){
         motorSQL = MotorSQL.getMotorSQL();
@@ -58,6 +59,24 @@ public class DAOUser {
     }
 
     public ArrayList<Usuario> highestSells(Usuario usuario) {
-        return new ArrayList<Usuario>();
+        ArrayList<Usuario> usuariosList = new ArrayList<>();
+
+        motorSQL.connect();
+        System.out.println(sqlHighestSell);
+        ResultSet resultSet = motorSQL.executeQuery(sqlHighestSell);
+        try {
+            while(resultSet.next()){
+                Usuario usuarioAux = new Usuario();
+                usuarioAux.setId(resultSet.getInt(1));
+                usuarioAux.setUsername(resultSet.getString(2));
+                usuarioAux.setSells(resultSet.getInt(3));
+                usuariosList.add(usuarioAux);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        motorSQL.close();
+        System.out.println(usuariosList);
+        return usuariosList;
     }
 }
