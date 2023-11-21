@@ -3,18 +3,25 @@
 import action.ActionProduct;
 import action.ActionUser;
 import com.google.gson.Gson;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
+import javax.servlet.http.Part;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @WebServlet("/MyServlet")
+@MultipartConfig
 public class MyServlet  extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         // Procesa alguna lógica aquí
@@ -23,12 +30,9 @@ public class MyServlet  extends HttpServlet {
 
         String action = request.getParameter("ACTION");
         PrintWriter out = response.getWriter();
-        System.out.println("hola que tal");
         String answer = "";
         switch(action){
             case "PRODUCT.ADD":
-                System.out.println(request.getParameter("ACTION"));
-                System.out.println(request.getParameter("nombre"));
                 ActionProduct actionProduct = new ActionProduct();
                 answer = actionProduct.execute(request, response);
                 break;
@@ -42,104 +46,34 @@ public class MyServlet  extends HttpServlet {
                 answer = new ActionUser().execute(request, response);
                 break;
             default:
-                System.out.print("tonto");
-                answer = "tonto";
+                answer = "nothing";
                 break;
         }
-        System.out.println("ANSWER IS:");
-        System.out.println(answer);
 
         out.print(answer);
     }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+        PrintWriter out = response.getWriter();
+        response.setContentType("application/json");
+        String message = "{message: 'Hola desde el POST METHOD'}";
+        String answer = "";
+
+
+        String action = request.getParameter("ACTION");
+        switch (action){
+            case "PRODUCT.ADD":
+                ActionProduct actionProduct = new ActionProduct();
+                answer = actionProduct.execute(request, response);
+                break;
+        }
+
+
+
+
+        out.print(message);
+    }
+
 }
-
-
-            //String id= request.getParameter("id");
-
-            //out.print(message);a
-            /*String jsonResponse = "{\"message\": \"¡Hola desde el Servlet!_"+ action + "\"}";
-
-            String jsonResponseObject= "{\n" +
-                    "    \"message\": \"Este es un mensaje de ejemplo\",\n" +
-                    "    \"lstUsers\": [\n" +
-                    "        {\n" +
-                    "            \"username\": \"username1\",\n" +
-                    "            \"token\": \"token1\"\n" +
-                    "        },\n" +
-                    "        {\n" +
-                    "            \"username\": \"username2\",\n" +
-                    "            \"token\": \"token2\"\n" +
-                    "        },\n" +
-                    "        {\n" +
-                    "            \"username\": \"username3\",\n" +
-                    "            \"token\": \"token3\"\n" +
-                    "        }\n" +
-                    "    ]\n" +
-                    "}";
-            User user1 = new User("username1", "token1");
-            User user2 = new User("username2", "token2");
-
-            List<User> userList = new ArrayList<>();
-            userList.add(user1);
-            userList.add(user2);
-
-            String peliculas = "{\n" +
-                    "    \"message\": \"Este es un mensaje de ejemplo\",\n" +
-                    "    \"lstPeliculas\": [\n" +
-                    "        {\n" +
-                    "            \"id\": 1,\n" +
-                    "            \"titulo\": \"Pelicula 1\",\n" +
-                    "            \"descripcion\": \"Descripción de la Pelicula 1\",\n" +
-                    "            \"director\": \"Director 1\",\n" +
-                    "            \"anyo\": 2022\n" +
-                    "        },\n" +
-                    "        {\n" +
-                    "            \"id\": 2,\n" +
-                    "            \"titulo\": \"Pelicula 2\",\n" +
-                    "            \"descripcion\": \"Descripción de la Pelicula 2\",\n" +
-                    "            \"director\": \"Director 2\",\n" +
-                    "            \"anyo\": 2023\n" +
-                    "        },\n" +
-                    "        {\n" +
-                    "            \"id\": 3,\n" +
-                    "            \"titulo\": \"Pelicula 3\",\n" +
-                    "            \"descripcion\": \"Descripción de la Pelicula 3\",\n" +
-                    "            \"director\": \"Director 3\",\n" +
-                    "            \"anyo\": 2021\n" +
-                    "        }\n" +
-                    "    ]\n" +
-                    "}";
-            //out.print(convertUsersToJSONString(userList));
-            // out.print(jsonResponseObject);
-
-            // Escribir el JSON en el PrintWriter
-            //out.print(jsonResponse);
-            *//*request.setAttribute("message", message);
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
-             *//*
-            out.print(peliculas);
-            out.close();
-        }
-*/
-  /*  public static String convertUsersToJSONString(List<User> users) {
-        StringBuilder jsonBuilder = new StringBuilder();
-        jsonBuilder.append("[");
-
-        for (int i = 0; i < users.size(); i++) {
-            User user = users.get(i);
-            jsonBuilder.append("{");
-            jsonBuilder.append("\"username\": \"").append(user.getUsername()).append("\", ");
-            jsonBuilder.append("\"token\": \"").append(user.getToken()).append("\"");
-            jsonBuilder.append("}");
-
-            // Si no es el último elemento, añade una coma
-            if (i < users.size() - 1) {
-                jsonBuilder.append(", ");
-            }
-        }
-
-        jsonBuilder.append("]");
-        return jsonBuilder.toString();
-    }*/
 
 

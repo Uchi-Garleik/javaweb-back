@@ -23,7 +23,7 @@ public class ActionUser {
             case "FILTER":
                 answer = filter(request, response);
             default:
-                System.out.println("wtf why am i here");
+                answer = "nothing found";
                 break;
         }
 
@@ -36,9 +36,6 @@ public class ActionUser {
         String jsonUsuarios = "";
         Usuario usuario = new Usuario();
         ArrayList<Usuario> usuarios = new ArrayList<>();
-        if (request.getParameter("FILTER") != null){
-            System.out.println("hay filtros");
-        }
 
         /*
         *   TODO: Could maybe stablish these default values on the constructor.
@@ -70,7 +67,6 @@ public class ActionUser {
         //usuarios = new DAOUser().findAll(usuario);
 
         String method = request.getParameter("FILTER");
-        System.out.println(method);
         if (method.equals("HighestSells")){
             usuarios = new DAOUser().highestSells(usuario);
         }

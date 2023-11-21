@@ -3,6 +3,9 @@ package dao;
 import connection.MotorSQL;
 import model.Producto;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,7 +15,7 @@ public class DAOProduct {
     private MotorSQL motorSQL;
 
     private String tableName = "products";
-    private String sqlInsert = "INSERT INTO " + tableName + " (nombre, descripcion, categoria, marca, talla, estado, precio, moneda, idUser) VALUES";
+    private String sqlInsert = "INSERT INTO " + tableName + " (nombre, descripcion, categoria, marca, talla, estado, precio, moneda, idUser, imagePath) VALUES";
     private String sqlFindAll = "SELECT * FROM " + tableName + " WHERE 1=1";
 
     public DAOProduct(){
@@ -20,6 +23,7 @@ public class DAOProduct {
     }
 
     public String add(Producto producto){
+
         String sql = "";
         sql = sqlInsert;
         sql += "('" + producto.getNombre() + "'," +
@@ -30,9 +34,9 @@ public class DAOProduct {
                 "'" + producto.getEstado() + "'," +
                 "" + producto.getPrecio() + "," +
                 "'" + producto.getMoneda() + "'," +
-                "" + producto.getIdUser() +
+                "" + producto.getIdUser() + ',' +
+                '\'' + producto.getImagePath() + '\'' +
                 ")";
-        System.out.println(sql);
         motorSQL.connect();
         motorSQL.executeUpdate(sql);
         motorSQL.close();
@@ -52,7 +56,6 @@ public class DAOProduct {
             sql += " AND idUser = " + producto.getIdUser();
         }
 
-        System.out.println(sql);
 
         motorSQL.connect();
         sql = "SELECT * FROM PRODUCTS WHERE 1=1";
@@ -70,6 +73,9 @@ public class DAOProduct {
                 productoAux.setPrecio(Double.parseDouble(resultSet.getString(8)));
                 productoAux.setMoneda(resultSet.getString(9));
                 productoAux.setIdUser(Integer.parseInt(resultSet.getString(10)));
+                productoAux.setImagePath(resultSet.getString(11));
+
+                // TODO: SET IMAGE
                 productsList.add(productoAux);
             }
         } catch (SQLException e) {

@@ -38,7 +38,6 @@ public class DAOUser {
         motorSQL.connect();
         ResultSet resultSet = motorSQL.executeQuery(sql);
         try {
-            System.out.println("im here");
             while(resultSet.next()){
                 Usuario usuarioAux = new Usuario();
                 usuarioAux.setId(resultSet.getInt(1));
@@ -48,7 +47,6 @@ public class DAOUser {
 //                usuarioAux.setId(resultSet.getInt(1));
 //                usuarioAux.setUsername(resultSet.getString(2));
 //                usuarioAux.setPassword(resultSet.getString(3));
-//                System.out.println("im here 2.0");
 //                listUsuario.add(usuarioAux);
             }
         } catch (SQLException e) {
@@ -62,7 +60,6 @@ public class DAOUser {
         ArrayList<Usuario> usuariosList = new ArrayList<>();
 
         motorSQL.connect();
-        System.out.println(sqlHighestSell);
         ResultSet resultSet = motorSQL.executeQuery(sqlHighestSell);
         try {
             while(resultSet.next()){
@@ -76,7 +73,6 @@ public class DAOUser {
             throw new RuntimeException(e);
         }
         motorSQL.close();
-        System.out.println(usuariosList);
         return usuariosList;
     }
 }

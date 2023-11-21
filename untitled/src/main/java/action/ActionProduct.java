@@ -3,11 +3,20 @@ package action;
 import com.google.gson.Gson;
 import dao.DAOProduct;
 import model.Producto;
+import org.apache.commons.io.IOUtils;
 
+import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Base64;
 
 public class ActionProduct {
     DAOProduct daoProduct;
@@ -24,15 +33,13 @@ public class ActionProduct {
 
         switch(method[1]){
             case "ADD":
-                System.out.println("{adding articles...}");
                 answer = addProduct(request, response);
                 break;
             case "FILTER":
-                System.out.println("{filtering articles...}");
                 answer = listProducts(request, response);
                 break;
             default:
-                System.out.println("no method found");
+                answer = "nothing found";
                 break;
         }
         return answer;
@@ -57,7 +64,6 @@ public class ActionProduct {
 
 // Check and set "descripcion" parameter
         if (request.getParameter("descripcion") != null) {
-            System.out.println("LINEA 60");
             producto.setDescripcion(request.getParameter("descripcion"));
         }
 
@@ -93,7 +99,6 @@ public class ActionProduct {
 
 // Check and set "idUser" parameter
         if (request.getParameter("idUser") != null) {
-            System.out.println("huh");
             producto.setIdUser(Integer.parseInt(request.getParameter("idUser")));
         }
         productsList = new DAOProduct().findAll(producto);
@@ -111,37 +116,42 @@ public class ActionProduct {
     }
 
     private String addProduct(HttpServletRequest request, HttpServletResponse response) {
+        String imagePath = "/content/images/" + request.getParameter("idUser") + request.getParameter("nombre") + ".png";
+        try{
+            Part imagePart = request.getPart("image");
+
+            InputStream imageInputStream = imagePart.getInputStream();
+            byte[] imageBytes = IOUtils.toByteArray(imageInputStream);
+            imageInputStream.close();
+
+            String encodedString = new String(imageBytes, StandardCharsets.UTF_8);
+            encodedString = encodedString.replace("\n","");
+            byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
+
+            FileOutputStream fileOutputStream = new FileOutputStream(imagePath);
+            fileOutputStream.write(decodedBytes);
+            fileOutputStream.close();
+        }catch(FileNotFoundException e){
+            System.out.println("file not found" + e.getMessage());
+        }catch(IOException e){
+            System.out.println("IO Exception" + e.getMessage());
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        }
+
+
         String nombre = request.getParameter("nombre");
         String descripcion = request.getParameter("descripcion");
         String categoria = request.getParameter("categoria");
         String marca = request.getParameter("marca");
         String talla = request.getParameter("talla");
         String estado = request.getParameter("estado");
-        System.out.println(request.getParameter("estado"));
         double precio = Double.parseDouble(request.getParameter("precio"));
         String moneda = request.getParameter("moneda");
         int idUser = Integer.parseInt(request.getParameter("idUser"));
 
-        Producto producto = new Producto(nombre, descripcion, categoria, marca, talla, estado, precio, moneda, idUser);
+        Producto producto = new Producto(nombre, descripcion, categoria, marca, talla, estado, precio, moneda, idUser, imagePath);
         daoProduct.add(producto);
-
-        /*String jsonResponseObject= "{\n" +
-                "    \"message\": \"Este es un mensaje de ejemplo\",\n" +
-                "    \"productList\": [\n" +
-                "        {\n" +
-                "            \"username\": \"username1\",\n" +
-                "            \"token\": \"token1\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"username\": \"username2\",\n" +
-                "            \"token\": \"token2\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"username\": \"username3\",\n" +
-                "            \"token\": \"token3\"\n" +
-                "        }\n" +
-                "    ]\n" +
-                "}";*/
         return "";
     }
 }

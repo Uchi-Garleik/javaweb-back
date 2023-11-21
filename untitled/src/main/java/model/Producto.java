@@ -11,12 +11,13 @@ public class Producto {
     private double precio;
     private String moneda;
     private int idUser;
+    private String imagePath;
 
     public Producto() {
 
     }
 
-    public Producto(String nombre, String descripcion, String categoria, String marca, String talla, String estado, double precio, String moneda, int idUser) {
+    public Producto(String nombre, String descripcion, String categoria, String marca, String talla, String estado, double precio, String moneda, int idUser, String imagePath) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -26,6 +27,8 @@ public class Producto {
         this.precio = precio;
         this.moneda = moneda;
         this.idUser = idUser;
+        this.imagePath = imagePath;
+        //  TODO: Could maybe add a default path to a default product icon to the imagepath
     }
 
     @Override
@@ -41,6 +44,14 @@ public class Producto {
                 ", moneda='" + moneda + '\'' +
                 ", idUser=" + idUser +
                 '}';
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public int getIdUser() {
