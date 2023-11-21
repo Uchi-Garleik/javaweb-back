@@ -55,6 +55,7 @@ public class DAOProduct {
         System.out.println(sql);
 
         motorSQL.connect();
+        sql = "SELECT * FROM PRODUCTS WHERE 1=1";
         ResultSet resultSet = motorSQL.executeQuery(sql);
 
         try {
