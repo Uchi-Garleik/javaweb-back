@@ -68,6 +68,7 @@ public class DAOUser {
                 usuarioAux.setUsername(resultSet.getString(2));
                 usuarioAux.setSells(resultSet.getInt(3));
                 usuariosList.add(usuarioAux);
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

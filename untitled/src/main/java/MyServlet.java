@@ -49,7 +49,6 @@ public class MyServlet  extends HttpServlet {
                 answer = "nothing";
                 break;
         }
-
         out.print(answer);
     }
 

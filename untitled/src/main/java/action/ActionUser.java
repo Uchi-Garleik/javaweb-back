@@ -15,6 +15,7 @@ public class ActionUser {
 
         String action = request.getParameter("ACTION");
         String[] method = action.split("\\.");
+        System.out.println(method[1]);
 
         switch (method[1]){
             case "LOGIN":
@@ -22,13 +23,12 @@ public class ActionUser {
                 break;
             case "FILTER":
                 answer = filter(request, response);
+                break;
             default:
                 answer = "nothing found";
                 break;
         }
-
-
-
+        System.out.println(answer);
         return answer;
     }
 
@@ -81,6 +81,7 @@ public class ActionUser {
         }
         jsonUsuarios = jsonUsuarios.substring(0, jsonUsuarios.length()-2);
         jsonUsuarios += "]}";
+        System.out.println(jsonUsuarios);
         return jsonUsuarios;
     }
 
