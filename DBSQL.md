@@ -146,12 +146,12 @@ CREATE TABLE Rating (
     rating_user INT,
     rated_user INT,
     rating DOUBLE,
-    UNIQUE KEY UK_RATINGUSERS_RATING (rating_user, rated_user),
-    FOREIGN KEY (rating_user) REFERENCES users(id),
-    FOREIGN KEY (rated_user) REFERENCES users(id),
-    FOREIGN KEY (rating) REFERENCES RatingValues(rating)
+    UNIQUE KEY UK_RATINGUSERS_RATING (rating_user, rated_user)
 );
 
+ALTER TABLE RATING ADD CONSTRAINT FK_RATINGUSER_RATING FOREIGN KEY (rating_user) REFERENCES users(id);
+ALTER TABLE RATING ADD CONSTRAINT FK_RATEDUSER_RATING FOREIGN KEY (rated_user) REFERENCES users(id);
+ALTER TABLE RATING ADD CONSTRAINT FK_RATING_RATING FOREIGN KEY (rating) REFERENCES RatingValues(rating);
 
 CREATE USER 'uchi'@'localhost' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON vinteddb.* TO 'uchi'@'localhost';
