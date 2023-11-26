@@ -24,6 +24,9 @@ public class ActionUser {
             case "FILTER":
                 answer = filter(request, response);
                 break;
+            case "RATE":
+                answer = rating(request, response);
+                break;
             default:
                 answer = "nothing found";
                 break;
@@ -32,10 +35,18 @@ public class ActionUser {
         return answer;
     }
 
+    private String rating(HttpServletRequest request, HttpServletResponse response) {
+        Usuario usuario = new Usuario();
+        usuario.setId(Integer.parseInt(request.getParameter("idRatingUser")));
+
+        return "";
+    }
+
     private String filter(HttpServletRequest request, HttpServletResponse response) {
         String jsonUsuarios = "";
         Usuario usuario = new Usuario();
         ArrayList<Usuario> usuarios = new ArrayList<>();
+        String method = request.getParameter("FILTER");
 
         /*
         *   TODO: Could maybe stablish these default values on the constructor.
@@ -52,23 +63,24 @@ public class ActionUser {
 //            usuario.setId(Integer.parseInt(request.getParameter("id")));
 //        }
 
-        if (!(request.getParameter("id") == null)){
-            usuario.setId(Integer.parseInt(request.getParameter("id")));
-        }
+        switch (method){
+            case "HighestSells":
+                    usuarios = new DAOUser().highestSells(usuario);
+                break;
+            default:
+                if (!(request.getParameter("id") == null)){
+                    usuario.setId(Integer.parseInt(request.getParameter("id")));
+                }
 
-        if (!(request.getParameter("username") == null )){
-            usuario.setUsername(request.getParameter("username"));
-        }
+                if (!(request.getParameter("username") == null )){
+                    usuario.setUsername(request.getParameter("username"));
+                }
 
-        if (!(request.getParameter("password") == null)){
-            usuario.setPassword(request.getParameter("password"));
-        }
-
-        //usuarios = new DAOUser().findAll(usuario);
-
-        String method = request.getParameter("FILTER");
-        if (method.equals("HighestSells")){
-            usuarios = new DAOUser().highestSells(usuario);
+                if (!(request.getParameter("password") == null)){
+                    usuario.setPassword(request.getParameter("password"));
+                }
+                usuarios = new DAOUser().findAll(usuario);
+                break;
         }
 
         jsonUsuarios += "{ \"message\": \"Esto es un mensaje de prueba\", " +

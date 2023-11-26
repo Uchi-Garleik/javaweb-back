@@ -130,6 +130,28 @@ INSERT INTO products (nombre, descripcion, categoria, marca, talla, estado, prec
 ('Product 18', 'Description 18', 'Category C', 'Brand Z', 'XL', 'New', 35.00, 'USD', 9);
 
 
+CREATE TABLE RatingValues (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    rating DOUBLE
+);
+
+INSERT INTO RatingValues(rating) VALUES(1);
+INSERT INTO RatingValues(rating) VALUES(2);
+INSERT INTO RatingValues(rating) VALUES(3);
+INSERT INTO RatingValues(rating) VALUES(4);
+INSERT INTO RatingValues(rating) VALUES(5);
+
+CREATE TABLE Rating (
+    rating_id INT AUTO_INCREMENT PRIMARY KEY,
+    rating_user INT,
+    rated_user INT,
+    rating DOUBLE,
+    UNIQUE KEY UK_RATINGUSERS_RATING (rating_user, rated_user),
+    FOREIGN KEY (rating_user) REFERENCES users(id),
+    FOREIGN KEY (rated_user) REFERENCES users(id),
+    FOREIGN KEY (rating) REFERENCES RatingValues(rating)
+);
+
 
 CREATE USER 'uchi'@'localhost' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON vinteddb.* TO 'uchi'@'localhost';

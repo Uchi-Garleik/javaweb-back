@@ -56,9 +56,13 @@ public class DAOProduct {
             sql += " AND idUser = " + producto.getIdUser();
         }
 
+        if (producto.getCategoria() != null && !producto.getCategoria().equals("")){
+            sql += " AND categoria = '" + producto.getCategoria() + '\'';
+            System.out.println("IN CATEGORY DAO PRODUCT");
+        }
 
+        System.out.println("SQL TO EXECUTE::\n" + sql);
         motorSQL.connect();
-        sql = "SELECT * FROM PRODUCTS WHERE 1=1";
         ResultSet resultSet = motorSQL.executeQuery(sql);
 
         try {
@@ -83,7 +87,8 @@ public class DAOProduct {
         }
 
         motorSQL.close();
-
+        System.out.println("PRODUCTOS ARRAY");
+        System.out.println(productsList);
         return productsList;
     }
 

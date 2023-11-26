@@ -28,27 +28,21 @@ public class MyServlet  extends HttpServlet {
         String message = "{message: 'Hola desde el Servlet'}";
         response.setContentType("application/json");
 
-        String action = request.getParameter("ACTION");
+        String action = request.getParameter("ACTION").split("\\.")[0];
         PrintWriter out = response.getWriter();
         String answer = "";
         switch(action){
-            case "PRODUCT.ADD":
-                ActionProduct actionProduct = new ActionProduct();
-                answer = actionProduct.execute(request, response);
-                break;
-            case "PRODUCT.FILTER":
+            case "PRODUCT":
                 answer = new ActionProduct().execute(request, response);
                 break;
-            case "USER.LOGIN":
-                answer = new ActionUser().execute(request, response);
-                break;
-            case "USER.FILTER":
+            case "USER":
                 answer = new ActionUser().execute(request, response);
                 break;
             default:
                 answer = "nothing";
                 break;
         }
+        System.out.println(answer);
         out.print(answer);
     }
 
@@ -66,8 +60,6 @@ public class MyServlet  extends HttpServlet {
                 answer = actionProduct.execute(request, response);
                 break;
         }
-
-
 
 
         out.print(message);
