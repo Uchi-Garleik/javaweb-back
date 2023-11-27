@@ -109,16 +109,18 @@ public class ActionProduct {
         }
         productsList = new DAOProduct().findAll(producto);
 
-//        Gson gson = new Gson();
-//        String json = "";
-//        json += "{\"message\": \"Esto es un mensaje de prueba\",\"productsList\": [";
-//
-//        for (Producto productoAux:productsList) {
-//            json += gson.toJson(productoAux) + ", ";
-//        }
-//        json = json.substring(0, json.length()-2);
-//        json += "]}";
-        return "json";
+        Gson gson = new Gson();
+        String json = "";
+        json += "{\"message\": \"Esto es un mensaje de prueba\",\"productsList\": [";
+
+        for (Producto productoAux:productsList) {
+            json += gson.toJson(productoAux) + ", ";
+        }
+        json = json.substring(0, json.length()-2);
+        json += "]}";
+        System.out.println("producots a listar");
+        System.out.println(json);
+        return json;
     }
 
     private String addProduct(HttpServletRequest request, HttpServletResponse response) {
