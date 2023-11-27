@@ -2,7 +2,6 @@ package action;
 
 import com.google.gson.Gson;
 import dao.DAOUser;
-import model.Rating;
 import model.Usuario;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,11 +36,8 @@ public class ActionUser {
     }
 
     private String rating(HttpServletRequest request, HttpServletResponse response) {
-        Rating rating = new Rating();
-        rating.setRatingUser(Integer.parseInt(request.getParameter("idRatingUser")));
-        rating.setRatedUser(Integer.parseInt(request.getParameter("idRatedUser")));
-        rating.setRating(Double.parseDouble(request.getParameter("rating")));
-        new DAOUser().addRating(rating);
+        Usuario usuario = new Usuario();
+        usuario.setId(Integer.parseInt(request.getParameter("idRatingUser")));
 
         return "";
     }

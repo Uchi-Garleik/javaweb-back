@@ -1,7 +1,6 @@
 package dao;
 
 import connection.MotorSQL;
-import model.Rating;
 import model.Usuario;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,6 @@ public class DAOUser {
     private String tableName = "users";
     private String sqlFindAll = "SELECT * FROM " + tableName + " WHERE 1=1";
     private String sqlHighestSell = "SELECT users.id, users.username, COUNT(*) as TotalVentas FROM users INNER JOIN products ON products.idUser = users.id GROUP BY users.id ORDER BY TotalVentas DESC LIMIT 4";
-    private String sqlRate = "INSERT INTO rating (rating_user, rated_user, rating) VALUES";
 
     public DAOUser(){
         motorSQL = MotorSQL.getMotorSQL();
@@ -77,21 +75,5 @@ public class DAOUser {
         }
         motorSQL.close();
         return usuariosList;
-    }
-
-    public void findAllRatings(Rating rating){
-
-    }
-
-    public void addRating(Rating rating) {
-        String sql = sqlRate;
-        motorSQL.connect();
-
-
-
-        sql += "(" + rating.getRatingUser() + ',' + rating.getRatedUser() + ',' + rating.getRating() + ")";
-        System.out.println(sql);
-        motorSQL.executeUpdate(sql);
-        motorSQL.close();
     }
 }

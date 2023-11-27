@@ -56,7 +56,6 @@ public class MotorSQL {
 
     public ResultSet executeQuery(String sql){
         try {
-            System.out.println(sql);
             return statement.executeQuery(sql);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -65,14 +64,10 @@ public class MotorSQL {
 
     public int executeUpdate(String sql){
         try {
-            System.out.println(sql);
             return statement.executeUpdate(sql);
         } catch (SQLException e) {
-            if (e.getErrorCode() == 1062){
-                System.out.println("changing rating...");
-            }
+            throw new RuntimeException(e);
         }
-        return 0;
     }
 
 

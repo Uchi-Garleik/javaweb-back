@@ -1,7 +1,6 @@
 
 
 import action.ActionProduct;
-import action.ActionRating;
 import action.ActionUser;
 import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
@@ -38,9 +37,6 @@ public class MyServlet  extends HttpServlet {
                 break;
             case "USER":
                 answer = new ActionUser().execute(request, response);
-                break;
-            case "RATING":
-                answer = new ActionRating().execute(request, response);
                 break;
             default:
                 answer = "nothing";
