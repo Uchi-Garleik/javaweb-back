@@ -57,7 +57,13 @@ public class DAOProduct {
         }
 
         if (producto.getCategoria() != null && !producto.getCategoria().equals("")){
-            sql += " AND categoria = '" + producto.getCategoria() + '\'';
+            sql += " AND ";
+            String[] categoriasArray = producto.getCategoria().split("\\.");
+            for (int i = 0; i < categoriasArray.length; i++) {
+                sql += "categoria = '" + categoriasArray[i] + "' OR ";
+            }
+            sql = sql.substring(0, sql.length()-3);
+//            sql += " AND categoria = '" + producto.getCategoria() + '\'';
             System.out.println("IN CATEGORY DAO PRODUCT");
         }
 

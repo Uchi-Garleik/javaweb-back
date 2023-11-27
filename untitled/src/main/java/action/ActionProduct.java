@@ -58,6 +58,12 @@ public class ActionProduct {
         producto.setMoneda("");
         producto.setIdUser(-1);
 
+
+        System.out.println("CATEGORIA::" + producto.getCategoria());
+        producto.setCategoria(request.getParameter("categoria"));
+
+        // STRING ARRAY FROM "CATEGORIA" PARAMETER
+
         if (request.getParameter("nombre") != null){
             producto.setNombre(request.getParameter("nombre"));
         }
@@ -68,9 +74,9 @@ public class ActionProduct {
         }
 
 // Check and set "categoria" parameter
-        if (request.getParameter("categoria") != null) {
-            producto.setCategoria(request.getParameter("categoria"));
-        }
+//        if (request.getParameter("categoria") != null) {
+//            producto.setCategoria(request.getParameter("categoria"));
+//        }
 
 // Check and set "marca" parameter
         if (request.getParameter("marca") != null) {
@@ -103,16 +109,16 @@ public class ActionProduct {
         }
         productsList = new DAOProduct().findAll(producto);
 
-        Gson gson = new Gson();
-        String json = "";
-        json += "{\"message\": \"Esto es un mensaje de prueba\",\"productsList\": [";
-
-        for (Producto productoAux:productsList) {
-            json += gson.toJson(productoAux) + ", ";
-        }
-        json = json.substring(0, json.length()-2);
-        json += "]}";
-        return json;
+//        Gson gson = new Gson();
+//        String json = "";
+//        json += "{\"message\": \"Esto es un mensaje de prueba\",\"productsList\": [";
+//
+//        for (Producto productoAux:productsList) {
+//            json += gson.toJson(productoAux) + ", ";
+//        }
+//        json = json.substring(0, json.length()-2);
+//        json += "]}";
+        return "json";
     }
 
     private String addProduct(HttpServletRequest request, HttpServletResponse response) {

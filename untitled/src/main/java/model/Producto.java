@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Producto {
     private String nombre;
     private String descripcion;
@@ -9,6 +11,7 @@ public class Producto {
     private String talla;
     private String estado;
     private double precio;
+    private ArrayList<String> categoriaArray;
     private String moneda;
     private int idUser;
     private String imagePath;
@@ -28,7 +31,20 @@ public class Producto {
         this.moneda = moneda;
         this.idUser = idUser;
         this.imagePath = imagePath;
+        categoriaArray = new ArrayList<>();
         //  TODO: Could maybe add a default path to a default product icon to the imagepath
+    }
+
+    public ArrayList<String> getCategoriaArray() {
+        return categoriaArray;
+    }
+
+    public void setCategoriaArray(ArrayList<String> categoriaArray) {
+        this.categoriaArray = categoriaArray;
+    }
+
+    public void addCategoryToCategoryArray(String category){
+        getCategoriaArray().add(category);
     }
 
     @Override

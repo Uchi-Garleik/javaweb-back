@@ -23,7 +23,8 @@ CREATE TABLE products (
     estado VARCHAR(255) NOT NULL,
     precio DECIMAL(7,2) NOT NULL,
     moneda VARCHAR(255) NOT NULL,
-    idUser int
+    idUser int,
+    imagePath VARCHAR(400) DEFAULT '/content/images/default.png'
 );
 
 
@@ -130,16 +131,20 @@ INSERT INTO products (nombre, descripcion, categoria, marca, talla, estado, prec
 ('Product 18', 'Description 18', 'Category C', 'Brand Z', 'XL', 'New', 35.00, 'USD', 9);
 
 
-CREATE TABLE RatingValues (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    rating DOUBLE
-);
+--CREATE TABLE RatingValues (
+    --id INT AUTO_INCREMENT PRIMARY KEY,
+    --rating DOUBLE
+--);
 
-INSERT INTO RatingValues(rating) VALUES(1);
-INSERT INTO RatingValues(rating) VALUES(2);
-INSERT INTO RatingValues(rating) VALUES(3);
-INSERT INTO RatingValues(rating) VALUES(4);
-INSERT INTO RatingValues(rating) VALUES(5);
+--INSERT INTO RatingValues(rating) VALUES(1);
+--INSERT INTO RatingValues(rating) VALUES(2);
+--INSERT INTO RatingValues(rating) VALUES(3);
+--INSERT INTO RatingValues(rating) VALUES(4);
+--INSERT INTO RatingValues(rating) VALUES(5);
+
+--ALTER TABLE RATING ADD CONSTRAINT FK_RATINGUSER_RATING FOREIGN KEY (rating_user) REFERENCES users(id);
+--ALTER TABLE RATING ADD CONSTRAINT FK_RATEDUSER_RATING FOREIGN KEY (rated_user) REFERENCES users(id);
+--ALTER TABLE RATING ADD CONSTRAINT FK_RATING_RATING FOREIGN KEY (rating) REFERENCES RatingValues(rating);
 
 CREATE TABLE Rating (
     rating_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -149,9 +154,23 @@ CREATE TABLE Rating (
     UNIQUE KEY UK_RATINGUSERS_RATING (rating_user, rated_user)
 );
 
-ALTER TABLE RATING ADD CONSTRAINT FK_RATINGUSER_RATING FOREIGN KEY (rating_user) REFERENCES users(id);
-ALTER TABLE RATING ADD CONSTRAINT FK_RATEDUSER_RATING FOREIGN KEY (rated_user) REFERENCES users(id);
-ALTER TABLE RATING ADD CONSTRAINT FK_RATING_RATING FOREIGN KEY (rating) REFERENCES RatingValues(rating);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (3, 1, 5);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (2, 4, 3);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (5, 3, 2);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (4, 1, 4);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (2, 3, 5);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (3, 5, 3);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (4, 2, 1);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (5, 1, 4);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (2, 5, 2);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (3, 4, 3);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (4, 5, 1);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (5, 2, 4);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (3, 1, 4);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (2, 4, 5);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (5, 3, 2);
+INSERT INTO rating (rating_user, rated_user, rating) VALUES (4, 1, 3);
+
 
 CREATE USER 'uchi'@'localhost' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON vinteddb.* TO 'uchi'@'localhost';
