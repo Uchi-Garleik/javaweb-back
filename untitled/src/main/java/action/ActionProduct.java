@@ -135,8 +135,8 @@ public class ActionProduct {
             String encodedString = new String(imageBytes, StandardCharsets.UTF_8);
             encodedString = encodedString.replace("\n","");
             byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
-
-            FileOutputStream fileOutputStream = new FileOutputStream(imagePath);
+            System.out.println("http://192.168.104.75:8080"+imagePath);
+            FileOutputStream fileOutputStream = new FileOutputStream("http://192.168.104.75:8080" + imagePath);
             fileOutputStream.write(decodedBytes);
             fileOutputStream.close();
         }catch(FileNotFoundException e){
