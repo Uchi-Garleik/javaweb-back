@@ -15,6 +15,15 @@ public class Producto {
     private String moneda;
     private int idUser;
     private String imagePath;
+    private boolean enVenta;
+
+    public boolean isEnVenta() {
+        return enVenta;
+    }
+
+    public void setEnVenta(boolean enVenta) {
+        this.enVenta = enVenta;
+    }
 
     public Producto() {
 

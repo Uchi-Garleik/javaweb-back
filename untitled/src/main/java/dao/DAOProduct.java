@@ -67,7 +67,11 @@ public class DAOProduct {
             System.out.println("IN CATEGORY DAO PRODUCT");
         }
 
-        System.out.println("SQL TO EXECUTE::\n" + sql);
+        if (!(producto.isEnVenta())){
+            sql += " AND enVenta = true ";
+        }
+
+        System.out.println("SQL TO EXECUTE::\n" + sql);/*
         motorSQL.connect();
         ResultSet resultSet = motorSQL.executeQuery(sql);
 
@@ -94,7 +98,7 @@ public class DAOProduct {
 
         motorSQL.close();
         System.out.println("PRODUCTOS ARRAY");
-        System.out.println(productsList);
+        System.out.println(productsList);*/
         return productsList;
     }
 
