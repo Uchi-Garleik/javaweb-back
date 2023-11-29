@@ -22,13 +22,13 @@ public class ActionRating {
         String action = request.getParameter("ACTION");
         String[] method = action.split("\\.");
         System.out.println(method[1]);
-        System.out.println("wtf");
 
         switch (method[1]){
             case "RATE":
                 answer = rating(request, response);
                 break;
             case "FINDALL":
+                System.out.println("hello");
                 answer = findAll(request, response);
                 break;
             default:
@@ -52,14 +52,25 @@ public class ActionRating {
         Rating rating = new Rating();
         rating.setRatingUser(Integer.parseInt(request.getParameter("idUser")));
 
-        ArrayList<Rating> ratingArrayList;
-
-        if ( request.getParameter("filter") != null && request.getParameter("filter").equals("FavouriteUsers")){
-            ratingArrayList = new DAORating().findFavouriteRatings(rating);
-        }else{
-            System.out.println("fghfg");
-            ratingArrayList = new DAORating().findAllRatings(rating);
+        ArrayList<Rating> ratingArrayList = new ArrayList<>();
+        System.out.println(request.getParameter("filter"));
+        switch (request.getParameter("filter")){
+            case "FavouriteUsers":
+                ratingArrayList = new DAORating().findFavouriteRatings(rating);
+                break;
+            case "HighestSells":
+                ratingArrayList = new DAORating().findHighestSells(rating);
+                break;
+            case "FINDALL":
+                ratingArrayList = new DAORating().findAllRatings(rating);
+                break;
         }
+//        if ( request.getParameter("filter") != null && request.getParameter("filter").equals("FavouriteUsers")){
+//        } else if(request.getParameter())
+//
+//        else{
+//            System.out.println("fghfg");
+//        }
 
 //        System.out.println(ratingArrayList);
 //        System.out.println("hi");

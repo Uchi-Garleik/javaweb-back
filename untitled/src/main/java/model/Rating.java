@@ -4,9 +4,26 @@ public class Rating {
     private int ratingUser;
     private int ratedUser;
     private double rating;
-
     private String ratingUserName;
     private String ratedUsername;
+    private double averageRating;
+    private int totalSells;
+
+    public int getTotalSells() {
+        return totalSells;
+    }
+
+    public void setTotalSells(int totalSells) {
+        this.totalSells = totalSells;
+    }
+
+    public double getAverageRating() {
+        return averageRating;
+    }
+
+    public void setAverageRating(double averageRating) {
+        this.averageRating = averageRating;
+    }
 
     public String getRatingUserName() {
         return ratingUserName;
