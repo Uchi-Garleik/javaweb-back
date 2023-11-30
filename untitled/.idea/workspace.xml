@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="04582973-1718-4654-a3dd-f97d0dbc8bc7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/action/ActionProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/ActionProduct.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +48,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/S2-PC00/Documents/GitHub/javaweb-back/commons-io-2.15.0/commons-io-2.15.0.jar",
+    "last_opened_file_path": "C:/Users/S2-PC00/Documents/GitHub/javaweb-back/mysql-connector-j-8.2.0/mysql-connector-j-8.2.0.jar",
     "onboarding.tips.debug.path": "C:/Users/zekro/Documents/GitHub/javaweb-back/untitled/src/main/java/org/example/Main.java",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
@@ -65,6 +66,9 @@
       <option name="catalinaBase" value="C:\Users\zekro\.SmartTomcat\untitled\untitled" />
       <option name="contextPath" value="/untitled" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="envOptions">
+        <map />
+      </option>
       <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>
@@ -88,6 +92,9 @@
       <option name="catalinaBase" value="C:\Users\S2-PC00\.SmartTomcat\untitled\untitled" />
       <option name="contextPath" value="/untitled" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
+      <option name="envOptions">
+        <map />
+      </option>
       <option name="extraClassPath" value="" />
       <option name="tomcatInfo">
         <TomcatInfo>
