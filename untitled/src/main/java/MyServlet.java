@@ -3,6 +3,7 @@
 import action.ActionProduct;
 import action.ActionRating;
 import action.ActionUser;
+import action.ActionVenta;
 import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
 
@@ -41,6 +42,9 @@ public class MyServlet  extends HttpServlet {
                 break;
             case "RATING":
                 answer = new ActionRating().execute(request, response);
+                break;
+            case "VENTAS":
+                answer = new ActionVenta().execute(request, response);
                 break;
             default:
                 answer = "nothing";

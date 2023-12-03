@@ -38,6 +38,9 @@ public class ActionProduct {
             case "FILTER":
                 answer = listProducts(request, response);
                 break;
+            case "FILTERNOTMINE":
+                answer = listProducts(request,response);
+                break;
             default:
                 answer = "nothing found";
                 break;
@@ -63,6 +66,9 @@ public class ActionProduct {
         producto.setCategoria(request.getParameter("categoria"));
 
         // STRING ARRAY FROM "CATEGORIA" PARAMETER
+        if (request.getParameter("id") != null){
+            producto.setId(Integer.parseInt(request.getParameter("id")));
+        }
 
         if (request.getParameter("nombre") != null){
             producto.setNombre(request.getParameter("nombre"));
@@ -107,7 +113,13 @@ public class ActionProduct {
         if (request.getParameter("idUser") != null) {
             producto.setIdUser(Integer.parseInt(request.getParameter("idUser")));
         }
-        productsList = new DAOProduct().findAll(producto);
+
+        if (request.getParameter("ACTION").split("\\.")[1].equals("FILTERNOTMINE")){
+            productsList = new DAOProduct().findAllButMine(producto);
+        }else{
+            productsList = new DAOProduct().findAll(producto);
+        }
+
 
         Gson gson = new Gson();
         String json = "";
@@ -136,7 +148,7 @@ public class ActionProduct {
             encodedString = encodedString.replace("\n","");
             byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
             System.out.println("http://192.168.104.75:8080"+imagePath);
-            FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\S2-PC00\\.SmartTomcat\\untitled\\untitled\\webapps" + imagePath);
+            FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\zekro\\.SmartTomcat\\untitled\\untitled\\webapps" + imagePath);
             fileOutputStream.write(decodedBytes);
             fileOutputStream.close();
         }catch(FileNotFoundException e){
@@ -162,4 +174,5 @@ public class ActionProduct {
         daoProduct.add(producto);
         return "";
     }
+
 }

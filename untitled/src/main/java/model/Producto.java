@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Producto {
+    private int id;
     private String nombre;
     private String descripcion;
     //    private String howToStoreAnImage;
@@ -59,16 +60,28 @@ public class Producto {
     @Override
     public String toString() {
         return "Producto{" +
-                "nombre='" + nombre + '\'' +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", categoria='" + categoria + '\'' +
                 ", marca='" + marca + '\'' +
-                ", talla=" + talla +
+                ", talla='" + talla + '\'' +
                 ", estado='" + estado + '\'' +
                 ", precio=" + precio +
+                ", categoriaArray=" + categoriaArray +
                 ", moneda='" + moneda + '\'' +
                 ", idUser=" + idUser +
+                ", imagePath='" + imagePath + '\'' +
+                ", enVenta=" + enVenta +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getImagePath() {
