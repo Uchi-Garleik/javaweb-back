@@ -51,13 +51,6 @@ public class ActionUser {
         Usuario usuario = new Usuario();
         ArrayList<Usuario> usuarios = new ArrayList<>();
         String method = request.getParameter("FILTER");
-
-        /*
-        *   TODO: Could maybe stablish these default values on the constructor.
-        *       Not doing this yet in case it breaks it.
-        *       Reminder to do this too for the products
-        * */
-
         usuario.setId(-1);
         usuario.setUsername("");
         usuario.setPassword("");
