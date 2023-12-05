@@ -137,6 +137,7 @@ public class ActionProduct {
 
     private String addProduct(HttpServletRequest request, HttpServletResponse response) {
         String imagePath = "\\content\\images\\" + request.getParameter("idUser") + request.getParameter("nombre") + ".png";
+        System.out.println(imagePath);
         try{
             Part imagePart = request.getPart("image");
 
@@ -148,7 +149,7 @@ public class ActionProduct {
             encodedString = encodedString.replace("\n","");
             byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
             System.out.println("http://192.168.104.75:8080"+imagePath);
-            FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\zekro\\.SmartTomcat\\untitled\\untitled\\webapps" + imagePath);
+            FileOutputStream fileOutputStream = new FileOutputStream("C:\\Users\\S2-PC00\\.SmartTomcat\\untitled\\untitled\\webapps" + imagePath);
             fileOutputStream.write(decodedBytes);
             fileOutputStream.close();
         }catch(FileNotFoundException e){
