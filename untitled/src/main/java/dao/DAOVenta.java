@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class DAOVenta {
     private MotorSQL motorSQL;
     private String sqlADD = "INSERT INTO ventas (idUsuario, idProducto) VALUES";
-    private String SQLFINDALL = "SELECT v.id, p.nombre, p.descripcion, v.fecha, p.precio FROM ventas v JOIN products p ON p.id = v.idProducto WHERE 1=1";
+    private String SQLFINDALL = "SELECT v.id, p.nombre, p.descripcion, v.fecha, p.precio, p.imagePath FROM ventas v JOIN products p ON p.id = v.idProducto WHERE 1=1";
 
     public DAOVenta(){
         motorSQL = MotorSQL.getMotorSQL();
@@ -51,6 +51,7 @@ public class DAOVenta {
                 historicoCompraAux.setDescripcionProducto(resultSet.getString(3));
                 historicoCompraAux.setFechaCompra(resultSet.getString(4));
                 historicoCompraAux.setPrecioCompra(resultSet.getDouble(5));
+                historicoCompraAux.setImagePath(resultSet.getString(6));
                 historicoCompras.add(historicoCompraAux);
             }
         } catch (SQLException e) {

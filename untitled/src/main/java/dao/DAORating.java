@@ -24,7 +24,7 @@ public class DAORating {
 
     public ArrayList<Rating> findAllRatings(Rating rating){
         ArrayList<Rating> ratingArrayList = new ArrayList<>();
-        String sql = "SELECT u.id AS rated_user_id, u.username AS rated_username, r.rating AS user_rating FROM users u LEFT JOIN rating r ON u.id = r.rated_user AND r.rating_user = " + rating.getRatingUser() + " WHERE u.id != " + rating.getRatingUser();
+        String sql = "SELECT u.id AS rated_user_id, u.username AS rated_username, r.rating AS user_rating, u.imagePath FROM users u LEFT JOIN rating r ON u.id = r.rated_user AND r.rating_user = " + rating.getRatingUser() + " WHERE u.id != " + rating.getRatingUser();
 //        System.out.println(sql);
         motorSQL.connect();
         ResultSet resultSet = motorSQL.executeQuery(sql);
@@ -35,6 +35,7 @@ public class DAORating {
                 ratingAux.setRatedUser(resultSet.getInt(1));
                 ratingAux.setRatedUsername(resultSet.getString(2));
                 ratingAux.setRating(resultSet.getDouble(3));
+                ratingAux.setImagePath(resultSet.getString(4));
                 ratingArrayList.add(ratingAux);
             }
         } catch (SQLException e) {

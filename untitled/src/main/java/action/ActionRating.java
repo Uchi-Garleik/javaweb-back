@@ -80,7 +80,7 @@ public class ActionRating {
         json += "{\"message\": \"Esto es un mensaje de prueba\",\"usersList\": [";
 //      {"ratingUser":0,"ratedUser":2,"rating":3.0,"ratedUsername":"user1"},
         for (Rating ratingAux:ratingArrayList) {
-            json += "{\"id\":" + ratingAux.getRatedUser() + ", \"username\": \"" + ratingAux.getRatedUsername() +"\", \"password\":\"z\", \"sells\":0, \"rating\":" + ratingAux.getRating() + "}, ";
+            json += "{\"id\":" + ratingAux.getRatedUser() + ", \"username\": \"" + ratingAux.getRatedUsername() +"\", \"password\":\"z\", \"sells\":0, \"rating\":" + ratingAux.getRating() + ", \"imagePath\": \"" + ratingAux.getImagePath() + "\"}, ";
         }
         json = json.substring(0, json.length()-2);
         json += "]}";

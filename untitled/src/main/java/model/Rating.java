@@ -8,6 +8,15 @@ public class Rating {
     private String ratedUsername;
     private double averageRating;
     private int totalSells;
+    private String imagePath;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public int getTotalSells() {
         return totalSells;
@@ -82,6 +91,7 @@ public class Rating {
                 ", rating=" + rating +
                 ", ratingUserName='" + ratingUserName + '\'' +
                 ", ratedUsername='" + ratedUsername + '\'' +
+                ", imagePath='" + imagePath + '\'' +
                 '}';
     }
 }

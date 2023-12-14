@@ -7,7 +7,31 @@
     <list default="true" id="04582973-1718-4654-a3dd-f97d0dbc8bc7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/action/ActionProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/ActionProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vinteddb.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../vinteddb.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/action/ActionRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/ActionRating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/action/ActionVenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/ActionVenta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAORating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAORating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAOVenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAOVenta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/HistoricoCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HistoricoCompra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Rating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled3/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled3/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled3/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled3/target/classes/org/example/Contador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled3/target/classes/org/example/Hilo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled3/target/classes/org/example/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled4/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled4/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled4/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled4/target/classes/org/example/Contador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled4/target/classes/org/example/Hilo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled4/target/classes/org/example/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-json/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-json/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-json/.idea/libraries/jackson_core_2_14_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-json/.idea/libraries/jackson_dataformat_xml_2_16_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-json/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml-json/target/classes/org/example/Main.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +81,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
-  <component name="RunManager" selected="Smart Tomcat.Unnamed">
+  <component name="RunManager" selected="Smart Tomcat.Unnamed (1)">
     <configuration name="Unnamed (1)" type="com.poratu.idea.plugins.tomcat" nameIsGenerated="true">
       <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
       <predefined_log_file enabled="true" id="Tomcat Access Log" />

@@ -51,7 +51,7 @@ public class ActionVenta {
         }
         json = json.substring(0,json.length()-2);
         json += "]}";
-
+        System.out.println(json);
         return json;
     }
 

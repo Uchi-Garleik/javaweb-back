@@ -5,6 +5,7 @@ public class Usuario {
     private String username;
     private String password;
     private int sells;
+    private String imagePath;
 
     public Usuario() {
         this.setSells(0);
@@ -18,6 +19,8 @@ public class Usuario {
                 ", password='" + password + '\'' +
                 '}';
     }
+
+
 
     public int getSells() {
         return sells;

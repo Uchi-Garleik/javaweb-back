@@ -9,6 +9,17 @@ public class HistoricoCompra {
     private double precioCompra;
     private int id;
     private String descripcionProducto;
+    private String imagePath;
+
+
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public int getId() {
         return id;
@@ -50,8 +61,7 @@ public class HistoricoCompra {
                 "nombreProducto='" + nombreProducto + '\'' +
                 ", fechaCompra='" + fechaCompra + '\'' +
                 ", precioCompra=" + precioCompra +
-                ", id=" + id +
-                ", descripcionProducto='" + descripcionProducto + '\'' +
+                ", imagePath='" + imagePath + '\'' +
                 '}';
     }
 
