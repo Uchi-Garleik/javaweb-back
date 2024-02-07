@@ -1,78 +1,72 @@
-
-
-import action.ActionProduct;
-import action.ActionRating;
-import action.ActionUser;
-import action.ActionVenta;
-import com.google.gson.Gson;
-import org.apache.commons.io.IOUtils;
-
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.Socket;
+import java.net.URL;
 
 @WebServlet("/MyServlet")
 @MultipartConfig
-public class MyServlet  extends HttpServlet {
+public class MyServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        // Procesa alguna lógica aquí
-        String message = "{message: 'Hola desde el Servlet'}";
-        response.setContentType("application/json");
+        String apiKey = "RGAPI-83c9b63c-206b-4e47-b3db-9f8aa40c80ba"; // Replace with a secure method to obtain the API key
+        String apiUrl = "https://europe.api.riotgames.com/riot/account/v1/accounts/by-riot-id/uchi/bigd?api_key=" + apiKey;
+        HttpURLConnection connection = null;
+        System.out.println("1");
+        try {
+            // Create a URL object
+            URL url = new URL(apiUrl);
 
-        String action = request.getParameter("ACTION").split("\\.")[0];
-        PrintWriter out = response.getWriter();
-        String answer = "";
-        switch(action){
-            case "PRODUCT":
-                answer = new ActionProduct().execute(request, response);
-                break;
-            case "USER":
-                answer = new ActionUser().execute(request, response);
-                break;
-            case "RATING":
-                answer = new ActionRating().execute(request, response);
-                break;
-            case "VENTAS":
-                answer = new ActionVenta().execute(request, response);
-                break;
-            default:
-                answer = "nothing";
-                break;
+            // Open a connection to the URL
+            connection = (HttpURLConnection) url.openConnection();
+            System.out.println("2");
+            // Set the "Accept" header to accept any media type
+            connection.setRequestProperty("Accept", "*/*");
+
+            // Set the request method to GET
+            connection.setRequestMethod("GET");
+            System.out.println("3");
+            // Get the response code
+            connection.connect();
+            System.out.println("5");
+            int responseCode = connection.getResponseCode();
+            System.out.println("4");
+            // Check if the request was successful (status code 200)
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                // Read the response from the input stream
+                BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+                String line;
+                StringBuilder res = new StringBuilder();
+                System.out.println("5");
+                while ((line = reader.readLine()) != null) {
+                    res.append(line);
+                }
+
+                reader.close();
+
+                // Print the response
+                System.out.println("Response: " + res.toString());
+            } else {
+                System.out.println("Error: " + responseCode);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // Close the connection in a finally block to ensure cleanup
+            if (connection != null) {
+                connection.disconnect();
+            }
         }
-        System.out.println(answer);
-        out.print(answer);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-        PrintWriter out = response.getWriter();
-        response.setContentType("application/json");
-        String message = "{message: 'Hola desde el POST METHOD'}";
-        String answer = "";
-
-
-        String action = request.getParameter("ACTION");
-        switch (action){
-            case "PRODUCT.ADD":
-                ActionProduct actionProduct = new ActionProduct();
-                answer = actionProduct.execute(request, response);
-                break;
-        }
-
-
-        out.print(message);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        // Handle POST requests if needed
     }
-
 }
-
-

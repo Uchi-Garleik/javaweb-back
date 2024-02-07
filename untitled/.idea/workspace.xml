@@ -5,33 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04582973-1718-4654-a3dd-f97d0dbc8bc7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/action/ActionProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/ActionProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/action/ActionRating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/ActionRating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/action/ActionVenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/action/ActionVenta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAORating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAORating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/DAOVenta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/DAOVenta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/HistoricoCompra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HistoricoCompra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Rating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled3/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled3/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled3/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled3/target/classes/org/example/Contador.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled3/target/classes/org/example/Hilo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled3/target/classes/org/example/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled4/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled4/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled4/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled4/target/classes/org/example/Contador.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled4/target/classes/org/example/Hilo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../untitled4/target/classes/org/example/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-json/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-json/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-json/.idea/libraries/jackson_core_2_14_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-json/.idea/libraries/jackson_dataformat_xml_2_16_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-json/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../xml-json/target/classes/org/example/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MyServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/MyServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,31 +40,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/S2-PC00/Documents/GitHub/javaweb-back/commons-io-2.15.0/commons-io-2.15.0.jar&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/zekro/Documents/GitHub/javaweb-back/untitled/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Smart Tomcat.Unnamed (1).executor": "Run",
+    "Smart Tomcat.Unnamed.executor": "Run",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/S2-PC00/Documents/GitHub/javaweb-back/untitled",
+    "onboarding.tips.debug.path": "C:/Users/zekro/Documents/GitHub/javaweb-back/untitled/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
-  <component name="RunManager" selected="Smart Tomcat.Unnamed (1)">
+}]]></component>
+  <component name="RunManager" selected="Smart Tomcat.Unnamed">
     <configuration name="Unnamed (1)" type="com.poratu.idea.plugins.tomcat" nameIsGenerated="true">
       <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
       <predefined_log_file enabled="true" id="Tomcat Access Log" />
       <predefined_log_file id="Tomcat Catalina Log" />
       <predefined_log_file id="Tomcat Manager Log" />
       <predefined_log_file id="Tomcat Host Manager Log" />
-      <option name="catalinaBase" value="C:\Users\zekro\.SmartTomcat\untitled\untitled" />
+      <option name="catalinaBase" value="" />
       <option name="contextPath" value="/untitled" />
       <option name="docBase" value="$PROJECT_DIR$/src/main/webapp" />
       <option name="extraClassPath" value="" />
@@ -128,10 +107,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="Smart Tomcat.Unnamed" />
-      <item itemvalue="Smart Tomcat.Unnamed (1)" />
-    </list>
+    <configuration default="true" type="com.poratu.idea.plugins.tomcat">
+      <predefined_log_file enabled="true" id="Tomcat Localhost Log" />
+      <predefined_log_file enabled="true" id="Tomcat Access Log" />
+      <predefined_log_file id="Tomcat Catalina Log" />
+      <predefined_log_file id="Tomcat Manager Log" />
+      <predefined_log_file id="Tomcat Host Manager Log" />
+      <option name="tomcatInfo">
+        <TomcatInfo>
+          <option name="name" value="Apache Tomcat/10.1.18" />
+          <option name="path" value="$PROJECT_DIR$/../../Rift-Royalty-dev/apache-tomcat-10.1.18" />
+          <option name="version" value="10.1.18.0" />
+        </TomcatInfo>
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
